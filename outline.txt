@@ -1,0 +1,17 @@
+=== Requirements ===
+
+-- Goal: Demonstrate a CPU scheduler that outputs (Waiting + Turnaround + Response).
+- Use any method from the following (FCFS - SJF - Priority - Round Robin).
+- Language use : (Java | Team).
+- Document your code thoroughly, including clear explanations of functions, classes, and modules.
+- Consider including examples or sample inputs/outputs to illustrate how your code should be used.
+
+=== Design ===
+- class Process {ProcessID- Burst - arrival}
+-- Handle each process alone
+-- Process should not generate arrival
+
+- class Program
+-- Handle All processes
+-- Program is the generator of arrival
+-- Program can reset Arrival if onther operation is done
