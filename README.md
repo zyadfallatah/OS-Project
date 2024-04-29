@@ -27,7 +27,7 @@
 - Handle each process alone
 - Process should not generate arrival
 
-### - class Program
+### - class Scheduler
 - Handle All processes
 - Program is the generator of arrival
 - Program can reset Arrival if onther operation is done
@@ -43,7 +43,16 @@ Some point to be discussed:
 3. What Data Structures are we going to use.
 4. How to make the system dynamic.
 
-### Ziyad Opnions:
+### Opnions:
 - FCFS: is obvious to work with and its algorithm is straighforward.
 - SJF & Priority: Both should be implemented with the same function(method) to reduce redundancy.
 - Round Robin: To demonstrate that we should not allow **In Design** to work as calculator
+
+## === Work Enviroment ===
+- App.java is only to run the program and it should not be modifable
+- All our work will be inside Package src
+- Use `import src.*` to use what inside the package src
+- If you are working inside src you might not need use `import src.*`
+- There's a Test Example `Test.java` that demonstrate how to write your own class
+- During production we need both `Process.java` and `Scheduler.java` each have its own functions
+- Try to document your work *There's example in Test.java inside src*
