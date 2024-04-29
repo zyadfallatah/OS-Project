@@ -20,8 +20,8 @@
 - turnAroundTime: int
 - responseTime: int
 
-*** Note: Each Process should have it's own variables of above ***
-*** Program as whole can is responsibe for the total time ***
+***Note: Each Process should have it's own variables of above***
+***Program as whole can is responsibe for the total time***
 
 ### - class Process
 - Handle each process alone
@@ -35,7 +35,7 @@
 
 ## === Implementaion ===
 
-*** -- This is a group discuss -- ***
+***-- This is a group discuss --***
 
 Some point to be discussed: 
 1. How a certain algorithm should be implemented.
