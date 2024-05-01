@@ -27,6 +27,7 @@ public class Scheduler {
       case 2:
         // Shortest job First function
         shortestJob();
+        Screens.preemptiveScreen("Shortest Job First");
         break;
       case 3:
         // Priority
@@ -40,15 +41,5 @@ public class Scheduler {
         System.out.println("\n\nSorry There's no operation with this number!!");
         break;
     }
-  }
-
-  public static void printScreen() {
-    System.out.println("============\nCPU Scheduler\n============");
-    System.out.println("Please Choose your algorithm: ");
-
-    System.out.println("1.First Come First Serve");
-    System.out.println("2.Shortest Job First");
-    System.out.println("3.Priority");
-    System.out.println("4.Round Robin");
   }
 }

@@ -1,4 +1,6 @@
 import src.Scheduler;
+import src.Screens;
+
 import java.util.Scanner;
 
 /*
@@ -16,10 +18,9 @@ public class App {
     Scanner scanner = new Scanner(System.in);
 
     do {
-      System.out.print("\033[H\033[2J");  
-      System.out.flush();  
-      
-      Scheduler.printScreen();
+      Screens.clearScreen();
+
+      Screens.mainScreen();
 
       System.out.println("\nChoose your operation: ");
       opCode = scanner.nextInt();
