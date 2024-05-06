@@ -1,5 +1,3 @@
-package src;
-
 /*
   This class is resposible of displaying and printing at terminal
   

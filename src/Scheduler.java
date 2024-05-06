@@ -1,5 +1,3 @@
-package src;
-
 public class Scheduler {
   
   private static void firstCome() {

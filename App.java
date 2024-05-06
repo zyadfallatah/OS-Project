@@ -1,6 +1,3 @@
-import src.Scheduler;
-import src.Screens;
-
 import java.util.Scanner;
 
 /*
