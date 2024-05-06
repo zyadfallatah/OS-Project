@@ -4,6 +4,7 @@ public class Scheduler {
   
   private static void firstCome() {
     System.out.println("First come First Serve under work...");
+    System.out.println("Someone else worked here");
   }
 
   private static void shortestJob() {
