@@ -1,20 +1,51 @@
 package src;
+/*
+  Guidelines:
+  - Each person will be assign to a different operation
+  - If you have a new class you want to add, add it to components
+  - Don't modify core package
+
+  
+  Read Guide:
+    @Author: 'author name'
+    @Components: 'Component name';
+*/
+
 public class Scheduler {
   
   private static void firstCome() {
+  /* 
+    **Don't Delete This just replace what's between ' '**
+    @Author: 'Write your name here'
+    @Components: 'Write your component names here' 
+  */
     System.out.println("First come First Serve under work...");
-    System.out.println("Someone else worked here");
   }
 
   private static void shortestJob() {
+  /* 
+    **Don't Delete This just replace what's between ' '**
+    @Author: 'Write your name here'
+    @Components: 'Write your component names here' 
+  */
     System.out.println("Shortest job first under work...");
   }
 
   private static void priority() {
+  /* 
+    **Don't Delete This just replace what's between ' '**
+    @Author: 'Write your name here'
+    @Components: 'Write your component names here' 
+  */
     System.out.println("priority under work...");
   }
 
   private static void roundRobin() {
+  /* 
+    **Don't Delete This just replace what's between ' '**
+    @Author: 'Write your name here'
+    @Components: 'Write your component names here' 
+  */
     System.out.println("Round Robin under work...");
   }
 
