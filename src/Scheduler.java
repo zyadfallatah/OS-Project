@@ -11,6 +11,10 @@ package src;
     @Components: 'Component name';
 */
 
+import java.util.Scanner;
+import java.util.Arrays;
+
+
 public class Scheduler {
   
   private static void firstCome() {
@@ -25,10 +29,28 @@ public class Scheduler {
   private static void shortestJob() {
   /* 
     **Don't Delete This just replace what's between ' '**
-    @Author: 'hussain'
+    @Author: 'hussain lohmadi'
     @Components: 'shortest job first' 
   */
-   
+   Scanner sjf = new Scanner;
+   int Turnaround;
+   System.out.println("please enter how many procceses do ypu have: ");
+   int procces = sjf.nextInt();
+   burst = new int [procces];
+   int arrival = 0;
+   System.out.println("please enter the burst time");
+
+   for (int i = 0; i < burst.length - 1; i++){
+    burst[i] = sjf.nextInt();
+    System.out.print("["+ i +"]" + "" + arrival);
+    arrival ++;
+   }
+   Arrays.sort(burst);
+   for (int i = 0 ; i < burst.length - 1; i++){
+    Turnaround = burst[i] + Turnaround;
+   }
+   Turnaround = Turnaround - arrival;
+
     System.out.println("Shortest job first under work...");
   }
 
