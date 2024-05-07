@@ -1,4 +1,4 @@
-package components;
+package components.RoundRobin;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -11,37 +11,10 @@ import core.ProcessData;
   Last updated: 5/7/2024  MM/DD/YYYY
  */
 
-class RoundRobinProcess extends ProcessData {
-  private boolean finishState;
-  private int lastWaitingTime;
-
-  public RoundRobinProcess(String id, int burst) {
-    super(id, burst);
-    this.setWaitingTime(0);
-    this.finishState = false;
-    this.lastWaitingTime = 0;
-  }
-
-  public void changeFinishState() {
-    finishState = true;
-  }
-
-  public boolean isProcessFinished() {
-    return finishState;
-  }
-
-  public void setLastWaitingTime(int lastWaitingTime) {
-    this.lastWaitingTime = lastWaitingTime;
-  }
-
-  public int getLastWaitingTime() {
-    return lastWaitingTime;
-  }
-}
-
 public class RoundRobin {
   private int timeline;
   private int quantum;
+  private int idNum;
 
   private ArrayList<RoundRobinProcess> processList = new ArrayList<>();
   private Queue<RoundRobinProcess> finishedProcess = new LinkedList<>();
@@ -51,6 +24,7 @@ public class RoundRobin {
     this.quantum = quantum;
     this.timeline = 0;
     this.lastProcess = null;
+    this.idNum = 0;
   }
 
   private int handleRemain(RoundRobinProcess process) {
@@ -110,19 +84,24 @@ public class RoundRobin {
     }
   }
 
-  public void addProcess(RoundRobinProcess process) {
+  private void addProcess(RoundRobinProcess process) {
     process.setArrivalTime(0);
 
     processList.add(process);
   }
 
-  public void addProcess(ArrayList<RoundRobinProcess> processList) {
-    for (RoundRobinProcess process : processList) {
-      this.addProcess(process);
-    }
-  }
+  // private void addProcess(ArrayList<RoundRobinProcess> processList) {
+  //   for (RoundRobinProcess process : processList) {
+  //     this.addProcess(process);
+  //   }
+  // }
   
-  public void execute() {
+  public void createProcess(int burstTime) {
+    idNum++;
+    addProcess(new RoundRobinProcess("S" + idNum, burstTime));
+  }
+
+  public Queue<RoundRobinProcess> execute() {
     if (processList.isEmpty()) throw new Error("No input to round robin");
 
     this.assignTimes(true);
@@ -131,38 +110,9 @@ public class RoundRobin {
       this.assignTimes(false);
     }
 
-    // while (!finishedProcess.isEmpty()) {
-    //   RoundRobinProcess element = finishedProcess.poll();
-    //   System.out.print("Process ID: " + element.getProcessID() + " | ");
-    //   System.out.print("Respoonse Time: " + element.getResponseTime() + " | ");
-    //   System.out.print("Turnaround Time: " + element.getTurnAroundTime() + " | ");
-    //   System.out.println("Waiting Time: " + element.getWaitingTime());
-    // }
+    return finishedProcess;
   }
-
   /*
-  
+  This doesn't have anything with the algorithm
   */ 
-  private static void test() {
-    RoundRobinProcess process1 = new RoundRobinProcess("P1", 24); // 20  16
-    RoundRobinProcess process2 = new RoundRobinProcess("P2", 49); // 6  2
-    RoundRobinProcess process3 = new RoundRobinProcess("P3", 8); // done
-    RoundRobinProcess process4 = new RoundRobinProcess("P4", 2); // done
-    
-    double start = System.currentTimeMillis();
-    RoundRobin test = new RoundRobin(4);
-
-    for (int i = 0; i < 10000000; i++) {
-      test.addProcess(process1);
-      test.addProcess(process2);
-      test.addProcess(process3);
-      test.addProcess(process4);
-      test.execute();
-    }
-    double end = System.currentTimeMillis();
-
-    
-    double time = (end - start) / 1000;
-    System.out.println("Total time: " + (time) + "s");
-  }
 }

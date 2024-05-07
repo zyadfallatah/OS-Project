@@ -46,7 +46,8 @@ public class Scheduler {
     @Author: 'Ziyad mohammed fallatah'
     @Components: 'RoundRobin' 
   */
-    System.out.println("Round Robin under work...");
+    Screens.clearScreen();
+    Screens.roundRobinScreen();
   }
 
   public static void dispatcher(int opCode) {
