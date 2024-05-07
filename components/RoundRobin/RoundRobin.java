@@ -101,6 +101,10 @@ public class RoundRobin {
     addProcess(new RoundRobinProcess("S" + idNum, burstTime));
   }
 
+  public ArrayList<RoundRobinProcess> getInsertedData() {
+    return processList;
+  }
+
   public Queue<RoundRobinProcess> execute() {
     if (processList.isEmpty()) throw new Error("No input to round robin");
 

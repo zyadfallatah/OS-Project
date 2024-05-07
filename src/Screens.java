@@ -25,15 +25,9 @@ class ListItem {
 public class Screens {
   private static void printProcess(ProcessData process) {
     System.out.print("Process ID: " + process.getProcessID() + " | ");
-    System.out.print("Respoonse Time: " + process.getResponseTime() + " | ");
+    System.out.print("Response Time: " + process.getResponseTime() + " | ");
     System.out.print("Waiting Time: " + process.getWaitingTime() + " | ");
     System.out.println("Turnaround Time: " + process.getTurnAroundTime());
-  }
-
-  private static void printProcessList(ArrayList<ProcessData> processList) {
-    for (ProcessData process : processList) {
-      printProcess(process);
-    }
   }
 
   private static void printRoundRobin(Queue<RoundRobinProcess> processList) {
@@ -52,6 +46,26 @@ public class Screens {
     Queue<RoundRobinProcess> finishedProcess = test.execute();
 
     printRoundRobin(finishedProcess);
+  }
+  
+  private static ArrayList<Integer> roundRobinReader() {
+    ArrayList<Integer> burstTimeList = new ArrayList<>();
+    char read = ' ';
+    Scanner scanner = new Scanner(System.in);
+    int userBurstTime = -1;
+
+    clearScreen();
+    do {
+      System.out.println("Enter Your Process BurstTime: ");
+      userBurstTime = scanner.nextInt();
+
+      burstTimeList.add(userBurstTime);
+
+      System.out.println("Want to add more? (y/n): ");
+      read = scanner.next().toLowerCase().charAt(0);
+    } while (read != 'n');
+
+    return burstTimeList;
   }
 
   public static void clearScreen() {
@@ -83,6 +97,12 @@ public class Screens {
         roundRobinSample();
         break;
       case 2:
+        RoundRobin robin = new RoundRobin(2);
+        for (Integer userBurstTime : roundRobinReader()) {
+          robin.createProcess(userBurstTime);
+        }
+        printRoundRobin(robin.execute());
+        
         break;
       default:
         System.out.println("Sorry wrong opcode");
