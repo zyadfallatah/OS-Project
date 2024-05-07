@@ -32,24 +32,6 @@ public class Scheduler {
     @Author: 'hussain lohmadi'
     @Components: 'shortest job first' 
   */
-   Scanner sjf = new Scanner;
-   int Turnaround;
-   System.out.println("please enter how many procceses do ypu have: ");
-   int procces = sjf.nextInt();
-   burst = new int [procces];
-   int arrival = 0;
-   System.out.println("please enter the burst time");
-
-   for (int i = 0; i < burst.length - 1; i++){
-    burst[i] = sjf.nextInt();
-    System.out.print("["+ i +"]" + "" + arrival);
-    arrival ++;
-   }
-   Arrays.sort(burst);
-   for (int i = 0 ; i < burst.length - 1; i++){
-    Turnaround = burst[i] + Turnaround;
-   }
-   Turnaround = Turnaround - arrival;
 
     System.out.println("Shortest job first under work...");
   }
