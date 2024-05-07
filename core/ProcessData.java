@@ -10,7 +10,7 @@ public class ProcessData {
   private int turnAroundTime;
   private int responseTime;
   
-  ProcessData(String id, int burst) {
+  public ProcessData(String id, int burst) {
     this.processID = id;
     this.burstTime = burst;
   }
