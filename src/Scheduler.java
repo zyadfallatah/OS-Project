@@ -25,7 +25,7 @@ public class Scheduler {
   private static void shortestJob() {
   /* 
     **Don't Delete This just replace what's between ' '**
-    @Author: 'hussain lohmadi'
+    @Author: 'hussain'
     @Components: 'shortest job first' 
   */
    
