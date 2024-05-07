@@ -43,8 +43,8 @@ public class Scheduler {
   private static void roundRobin() {
   /* 
     **Don't Delete This just replace what's between ' '**
-    @Author: 'Write your name here'
-    @Components: 'Write your component names here' 
+    @Author: 'Ziyad mohammed fallatah'
+    @Components: 'RoundRobin' 
   */
     System.out.println("Round Robin under work...");
   }
