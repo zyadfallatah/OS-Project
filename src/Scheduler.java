@@ -25,9 +25,10 @@ public class Scheduler {
   private static void shortestJob() {
   /* 
     **Don't Delete This just replace what's between ' '**
-    @Author: 'Write your name here'
-    @Components: 'Write your component names here' 
+    @Author: 'hussain lohmadi'
+    @Components: 'shortest job first' 
   */
+   
     System.out.println("Shortest job first under work...");
   }
 
