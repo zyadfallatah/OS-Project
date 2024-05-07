@@ -25,33 +25,59 @@ public class Scheduler {
   */
     System.out.println("First come First Serve under work...");
   }
-
   private static void shortestJob() {
   /* 
     **Don't Delete This just replace what's between ' '**
     @Author: 'hussain lohmadi'
     @Components: 'shortest job first' 
   */
-   Scanner sjf = new Scanner;
-   int Turnaround;
+   Scanner sjf = new Scanner(System.in);
+   int [] burst;
+   int [] turnarray;
+   int Turnaround = 0;
    System.out.println("please enter how many procceses do ypu have: ");
    int procces = sjf.nextInt();
    burst = new int [procces];
+   turnarray = new int [procces];
    int arrival = 0;
    System.out.println("please enter the burst time");
 
-   for (int i = 0; i < burst.length - 1; i++){
+   for (int i = 0; i < burst.length; i++){
     burst[i] = sjf.nextInt();
-    System.out.print("["+ i +"]" + "" + arrival);
     arrival ++;
    }
    Arrays.sort(burst);
-   for (int i = 0 ; i < burst.length - 1; i++){
-    Turnaround = burst[i] + Turnaround;
+   for (int i = 0; i < burst.length; i++){
+    System.out.print("["+  burst[i] +"]" );
+    System.out.println("");
    }
-   Turnaround = Turnaround - arrival;
+   int choose = sjf.nextInt();
+   switch (choose) {
 
-    System.out.println("Shortest job first under work...");
+  case 1:{
+  /*turnaround time*/
+   for (int i = 0 ; i < burst.length ; i++){
+    Turnaround = burst[i] + Turnaround;
+    turnarray[i] = Turnaround;
+    System.out.println(Turnaround);
+   }
+   int turntemp2 = 0;
+   for (int i = 0 ; i < burst.length ; i++){
+    turntemp2 = turnarray[i] + turntemp2;
+   }
+   Turnaround = turntemp2/procces;
+   System.out.println("the terunaround is = " + Turnaround);
+  /*waitnig time */
+}
+      
+    break;
+   
+    case 2:{
+
+    }
+      break;
+   }
+   System.out.println("Shortest job first under work...");
   }
 
   private static void priority() {
