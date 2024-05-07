@@ -21,6 +21,10 @@ public class ProcessData {
 
   public void setBurstTime(int burstTime) {
     this.burstTime = burstTime;
+    
+    if (this.burstTime < 0) {
+      this.burstTime = 0;
+    }
   }
 
   public int getBurstTime() {
@@ -59,7 +63,7 @@ public class ProcessData {
     return responseTime;
   }
 
-  public ArrayList<ProcessData> sampleData() {
+  public static ArrayList<ProcessData> sampleData() {
     ArrayList<ProcessData> processList = new ArrayList<>();
     ProcessData process1 = new ProcessData("P0", 10); 
     ProcessData process2 = new ProcessData("P1", 5); 
