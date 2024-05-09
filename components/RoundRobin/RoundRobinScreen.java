@@ -97,6 +97,8 @@ public class RoundRobinScreen {
           robin.createProcess(userBurstTime);
         }
         printRoundRobin(robin.execute());
+        
+        System.out.println(robin.getAvg());
         System.out.println("#Context switchs: " + robin.getContextSwitches());
         break;
       default:

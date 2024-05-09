@@ -19,6 +19,7 @@ public class RoundRobin {
   private ArrayList<RoundRobinProcess> processList = new ArrayList<>();
   private Queue<RoundRobinProcess> finishedProcess = new LinkedList<>();
   private RoundRobinProcess lastProcess;
+  private RoundRobinProcess totalProcessTimes;
 
   public RoundRobin(int quantum, boolean isArrivalSame) {
     this.quantum = quantum;
@@ -27,6 +28,13 @@ public class RoundRobin {
     this.idNum = 0;
     this.contextSwitch = -1;
     this.isArrivalSame = isArrivalSame;
+    totalProcessTimes = new RoundRobinProcess("Total: ", -1);
+  }
+
+  private void setTotalProcessTime(RoundRobinProcess currentProcess) {
+    totalProcessTimes.setWaitingTime(totalProcessTimes.getWaitingTime() + currentProcess.getWaitingTime());
+    totalProcessTimes.setResponseTime(totalProcessTimes.getResponseTime() + currentProcess.getResponseTime());
+    totalProcessTimes.setTurnAroundTime(totalProcessTimes.getTurnAroundTime() + currentProcess.getTurnAroundTime());
   }
 
   private int handleRemain(RoundRobinProcess process) {
@@ -81,6 +89,19 @@ public class RoundRobin {
     return finishedProcess;
   }
 
+  public int getContextSwitches() {
+    return contextSwitch;
+  }
+
+  public String getAvg() {
+    String finalString = "";
+    finalString += totalProcessTimes.getProcessID();
+    finalString += "\nResponse Time: " + ((double) totalProcessTimes.getResponseTime() / idNum);
+    finalString += "\nWaiting Time: " + ((double) totalProcessTimes.getWaitingTime() / idNum);
+    finalString +="\nTurnaround Time: " + ((double) totalProcessTimes.getTurnAroundTime() / idNum) + "\n";
+    return finalString;
+  }
+
   private void assignTimes(boolean assignResponseTime) {
     int remain;
     int removed = 0;
@@ -111,14 +132,13 @@ public class RoundRobin {
 
       if (process.isProcessFinished()) {
         finishedProcess.add(process);
+
         removeItem(process);
         removed++;
         process.setTurnAroundTime(timeline);
+
+        setTotalProcessTime(process);
       }
     }
-  }
-
-  public int getContextSwitches() {
-    return contextSwitch;
   }
 }
