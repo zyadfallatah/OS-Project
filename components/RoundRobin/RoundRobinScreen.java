@@ -21,6 +21,13 @@ public class RoundRobinScreen {
     return scanner.nextLine().charAt(0);
   }
 
+  private static boolean readBool(String msg) {
+    System.out.println(msg);
+    Scanner scanner = new Scanner(System.in);
+
+    return scanner.nextBoolean();
+  }
+
   private static void printProcess(RoundRobinProcess process) {
     System.out.print("Process ID: " + process.getProcessID() + " | ");
     System.out.print("Response Time: " + process.getResponseTime() + " | ");
@@ -78,7 +85,11 @@ public class RoundRobinScreen {
         roundRobinSample();
         break;
       case 2:
-        RoundRobin robin = new RoundRobin(readInt("Enter the quantum: "), true);
+        RoundRobin robin = new RoundRobin(
+        readInt("\n\nEnter the quantum: "), 
+        readBool("\n\nEnter if Arrival is the same(write true: yes / write false: no)")
+        );
+
         for (Integer userBurstTime : roundRobinReader()) {
           robin.createProcess(userBurstTime);
         }
