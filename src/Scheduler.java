@@ -1,4 +1,7 @@
 package src;
+
+import components.RoundRobin.RoundRobinScreen;
+
 /*
   Guidelines:
   - Each person will be assign to a different operation
@@ -10,9 +13,6 @@ package src;
     @Author: 'author name'
     @Components: 'Component name';
 */
-
-import java.util.Scanner;
-import java.util.Arrays;
 
 
 public class Scheduler {
@@ -32,8 +32,6 @@ public class Scheduler {
     @Author: 'hussain lohmadi'
     @Components: 'shortest job first' 
   */
-
-    System.out.println("Shortest job first under work...");
   }
 
   private static void priority() {
@@ -51,8 +49,8 @@ public class Scheduler {
     @Author: 'Ziyad mohammed fallatah'
     @Components: 'RoundRobin' 
   */
-    Screens.clearScreen();
-    Screens.roundRobinScreen();
+    Screen.clearScreen();
+    RoundRobinScreen.showScreen();
   }
 
   public static void dispatcher(int opCode) {
@@ -64,7 +62,6 @@ public class Scheduler {
       case 2:
         // Shortest job First function
         shortestJob();
-        Screens.preemptiveScreen("Shortest Job First");
         break;
       case 3:
         // Priority
