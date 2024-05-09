@@ -13,6 +13,7 @@ public class RoundRobin {
   private int timeline;
   private int quantum;
   private int idNum;
+  private int contextSwitch;
   private boolean isArrivalSame;
 
   private ArrayList<RoundRobinProcess> processList = new ArrayList<>();
@@ -24,6 +25,7 @@ public class RoundRobin {
     this.timeline = 0;
     this.lastProcess = null;
     this.idNum = 0;
+    this.contextSwitch = -1;
     this.isArrivalSame = isArrivalSame;
   }
 
@@ -102,6 +104,8 @@ public class RoundRobin {
 
       lastProcess = process;
       
+      contextSwitch++;
+
       if (process.getBurstTime() == 0)
         process.changeFinishState();
 
@@ -114,4 +118,7 @@ public class RoundRobin {
     }
   }
 
+  public int getContextSwitches() {
+    return contextSwitch;
+  }
 }

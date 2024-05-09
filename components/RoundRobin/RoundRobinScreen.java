@@ -40,6 +40,7 @@ public class RoundRobinScreen {
       RoundRobinProcess element = processList.poll();
       printProcess(element);
     }
+
   }
 
   private static void roundRobinSample() {
@@ -51,6 +52,8 @@ public class RoundRobinScreen {
     Queue<RoundRobinProcess> finishedProcess = test.execute();
 
     printRoundRobin(finishedProcess);
+
+    System.out.println("#Context switchs: " + test.getContextSwitches());
   }
   
   private static ArrayList<Integer> roundRobinReader() {
@@ -93,7 +96,8 @@ public class RoundRobinScreen {
         for (Integer userBurstTime : roundRobinReader()) {
           robin.createProcess(userBurstTime);
         }
-        printRoundRobin(robin.execute());     
+        printRoundRobin(robin.execute());
+        System.out.println("#Context switchs: " + robin.getContextSwitches());
         break;
       default:
         System.out.println("Sorry wrong opcode");
