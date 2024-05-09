@@ -43,19 +43,6 @@ public class RoundRobinScreen {
 
   }
 
-  private static void roundRobinSample() {
-    RoundRobin test = new RoundRobin(4, true);
-    test.createProcess(24);
-    test.createProcess(3);
-    test.createProcess(3);
-    
-    Queue<RoundRobinProcess> finishedProcess = test.execute();
-
-    printRoundRobin(finishedProcess);
-
-    System.out.println("#Context switchs: " + test.getContextSwitches());
-  }
-  
   private static ArrayList<Integer> roundRobinReader() {
     ArrayList<Integer> burstTimeList = new ArrayList<>();
     char read;
@@ -75,35 +62,18 @@ public class RoundRobinScreen {
 
   public static void showScreen() {
     System.out.println("============\nRound Robin\n============");
-    System.out.println("1.Sample Data.");
-    System.out.println("2.Enter Your Data.");
+    RoundRobin robin = new RoundRobin(
+    readInt("\nEnter the quantum: "), 
+    true
+    );
 
-    short opCode = -1;
-
-    Scanner scanner = new Scanner(System.in);
-    opCode = scanner.nextShort();
-
-    switch (opCode) {
-      case 1:
-        roundRobinSample();
-        break;
-      case 2:
-        RoundRobin robin = new RoundRobin(
-        readInt("\n\nEnter the quantum: "), 
-        readBool("\n\nEnter if Arrival is the same(write true: yes / write false: no)")
-        );
-
-        for (Integer userBurstTime : roundRobinReader()) {
-          robin.createProcess(userBurstTime);
-        }
-        printRoundRobin(robin.execute());
-        
-        System.out.println(robin.getAvg());
-        System.out.println("#Context switchs: " + robin.getContextSwitches());
-        break;
-      default:
-        System.out.println("Sorry wrong opcode");
+    for (Integer userBurstTime : roundRobinReader()) {
+      robin.createProcess(userBurstTime);
     }
-    scanner.nextLine();
+    printRoundRobin(robin.execute());
+
+    System.out.println(robin.getAvg());
+    System.out.println("#Context switchs: " + robin.getContextSwitches());
+    }
   }
-}
+
