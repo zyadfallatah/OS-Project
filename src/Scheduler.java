@@ -1,5 +1,7 @@
 package src;
 
+import components.RoundRobin.RoundRobinScreen;
+
 /*
   Guidelines:
   - Each person will be assign to a different operation
@@ -48,7 +50,7 @@ public class Scheduler {
     @Components: 'RoundRobin' 
   */
     Screens.clearScreen();
-    Screens.roundRobinScreen();
+    RoundRobinScreen.showScreen();
   }
 
   public static void dispatcher(int opCode) {
