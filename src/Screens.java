@@ -38,7 +38,7 @@ public class Screens {
   }
 
   private static void roundRobinSample() {
-    RoundRobin test = new RoundRobin(4);
+    RoundRobin test = new RoundRobin(4, true);
     test.createProcess(24);
     test.createProcess(3);
     test.createProcess(3);
@@ -60,7 +60,7 @@ public class Screens {
       userBurstTime = scanner.nextInt();
 
       burstTimeList.add(userBurstTime);
-
+      
       System.out.println("Want to add more? (y/n): ");
       read = scanner.next().toLowerCase().charAt(0);
     } while (read != 'n');
@@ -97,12 +97,11 @@ public class Screens {
         roundRobinSample();
         break;
       case 2:
-        RoundRobin robin = new RoundRobin(2);
+        RoundRobin robin = new RoundRobin(2, true);
         for (Integer userBurstTime : roundRobinReader()) {
           robin.createProcess(userBurstTime);
         }
-        printRoundRobin(robin.execute());
-        
+        printRoundRobin(robin.execute());     
         break;
       default:
         System.out.println("Sorry wrong opcode");

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import core.ProcessData;
-
 /*
   @Author: Ziyad mohammed fallatah
   Last updated: 5/7/2024  MM/DD/YYYY
@@ -15,16 +13,18 @@ public class RoundRobin {
   private int timeline;
   private int quantum;
   private int idNum;
+  private boolean isArrivalSame;
 
   private ArrayList<RoundRobinProcess> processList = new ArrayList<>();
   private Queue<RoundRobinProcess> finishedProcess = new LinkedList<>();
   private RoundRobinProcess lastProcess;
 
-  public RoundRobin(int quantum) {
+  public RoundRobin(int quantum, boolean isArrivalSame) {
     this.quantum = quantum;
     this.timeline = 0;
     this.lastProcess = null;
     this.idNum = 0;
+    this.isArrivalSame = isArrivalSame;
   }
 
   private int handleRemain(RoundRobinProcess process) {
@@ -49,6 +49,36 @@ public class RoundRobin {
     return true;
   }
 
+  private void addProcess(RoundRobinProcess process) {
+    if (isArrivalSame)
+      process.setArrivalTime(0);
+    else
+      process.setArrivalTime(idNum);
+
+    idNum++;
+    processList.add(process);
+  }
+
+  public void createProcess(int burstTime) {
+    addProcess(new RoundRobinProcess("P" + idNum, burstTime));
+  }
+
+  public ArrayList<RoundRobinProcess> getInsertedData() {
+    return processList;
+  }
+
+  public Queue<RoundRobinProcess> execute() {
+    if (processList.isEmpty()) throw new Error("No input to round robin");
+
+    this.assignTimes(true);
+    
+    while (!processList.isEmpty()) {
+      this.assignTimes(false);
+    }
+
+    return finishedProcess;
+  }
+
   private void assignTimes(boolean assignResponseTime) {
     int remain;
     int removed = 0;
@@ -62,7 +92,7 @@ public class RoundRobin {
         process.setResponseTime(timeline);
 
       if (repeatingWaitingTime(process))
-        process.setWaitingTime(timeline - process.getLastWaitingTime());
+        process.setWaitingTime(timeline - process.getLastWaitingTime() - process.getArrivalTime());
 
       process.setBurstTime(process.getBurstTime() - quantum);
 
@@ -84,39 +114,4 @@ public class RoundRobin {
     }
   }
 
-  private void addProcess(RoundRobinProcess process) {
-    process.setArrivalTime(0);
-
-    processList.add(process);
-  }
-
-  // private void addProcess(ArrayList<RoundRobinProcess> processList) {
-  //   for (RoundRobinProcess process : processList) {
-  //     this.addProcess(process);
-  //   }
-  // }
-  
-  public void createProcess(int burstTime) {
-    idNum++;
-    addProcess(new RoundRobinProcess("S" + idNum, burstTime));
-  }
-
-  public ArrayList<RoundRobinProcess> getInsertedData() {
-    return processList;
-  }
-
-  public Queue<RoundRobinProcess> execute() {
-    if (processList.isEmpty()) throw new Error("No input to round robin");
-
-    this.assignTimes(true);
-    
-    while (!processList.isEmpty()) {
-      this.assignTimes(false);
-    }
-
-    return finishedProcess;
-  }
-  /*
-  This doesn't have anything with the algorithm
-  */ 
 }

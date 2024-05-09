@@ -1,4 +1,5 @@
 package src;
+
 /*
   Guidelines:
   - Each person will be assign to a different operation
@@ -10,9 +11,6 @@ package src;
     @Author: 'author name'
     @Components: 'Component name';
 */
-
-import java.util.Scanner;
-import java.util.Arrays;
 
 
 public class Scheduler {
