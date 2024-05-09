@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Queue;
 import java.util.Scanner;
 
-import src.Screens;
+import src.Screen;
 
 public class RoundRobinScreen {
   private static int readInt(String msg) {
@@ -51,7 +51,7 @@ public class RoundRobinScreen {
     char read;
     int userData;
 
-    Screens.clearScreen();
+    Screen.clearScreen();
     do {
       userData = readInt("Enter Your Process BurstTime: ");
 

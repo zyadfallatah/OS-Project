@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import src.Screens;
+import src.Screen;
 import src.Scheduler;
 /*
   Refrence: 
@@ -16,9 +16,9 @@ public class App {
     Scanner scanner = new Scanner(System.in);
 
     do {
-      Screens.clearScreen();
+      Screen.clearScreen();
 
-      Screens.mainScreen();
+      Screen.mainScreen();
 
       System.out.println("\nChoose your operation: ");
       opCode = scanner.nextInt();

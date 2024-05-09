@@ -49,7 +49,7 @@ public class Scheduler {
     @Author: 'Ziyad mohammed fallatah'
     @Components: 'RoundRobin' 
   */
-    Screens.clearScreen();
+    Screen.clearScreen();
     RoundRobinScreen.showScreen();
   }
 
@@ -62,7 +62,6 @@ public class Scheduler {
       case 2:
         // Shortest job First function
         shortestJob();
-        Screens.preemptiveScreen("Shortest Job First");
         break;
       case 3:
         // Priority

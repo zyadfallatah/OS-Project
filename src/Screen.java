@@ -1,13 +1,5 @@
 package src;
 
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.Scanner;
-
-import components.RoundRobin.RoundRobin;
-import components.RoundRobin.RoundRobinProcess;
-import core.ProcessData;
-
 class ListItem {
   private int generator = 1;
 
@@ -22,19 +14,10 @@ class ListItem {
 }
 
 
-public class Screens {
+public class Screen {
   public static void clearScreen() {
     System.out.print("\033[H\033[2J");  
     System.out.flush();  
-  }
-
-  public static void preemptiveScreen(String source) {
-    System.out.println("============\n"+ source +"\n============");
-    System.out.println("Choose how to execute " + source + ": ");
-
-    ListItem list = ListItem.createMenu();
-    list.addItem("Preemptive");
-    list.addItem("non-Preemptive");
   }
 
   public static void mainScreen() {
