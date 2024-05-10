@@ -1,7 +1,5 @@
 package components.RoundRobin;
 
-import core.ProcessData;
-
 public class RoundRobinProcess extends ProcessData {
   private boolean finishState;
   private int lastWaitingTime;
