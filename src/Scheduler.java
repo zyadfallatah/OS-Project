@@ -34,45 +34,74 @@ public class Scheduler {
    Scanner sjf = new Scanner(System.in);
    int [] burst;
    int [] turnarray;
+   int [] arrival;
+   int [] waiting;
    int Turnaround = 0;
-   System.out.println("please enter how many procceses do ypu have: ");
+   System.out.println("please enter how many procceses do you have: ");
    int procces = sjf.nextInt();
    burst = new int [procces];
    turnarray = new int [procces];
-   int arrival = 0;
+   arrival = new int [procces];
+   waiting = new int [procces-1];
+   int arrivaltotal = 0;
    System.out.println("please enter the burst time");
 
    for (int i = 0; i < burst.length; i++){
     burst[i] = sjf.nextInt();
-    arrival ++;
+    arrival[i] = i;
+    arrivaltotal ++;
+   }
+   System.out.println("procces    arrivel time");
+   for (int i = 0; i < burst.length; i++){
+    System.out.println(burst[i] + "                " + arrival[i]);
+   }
+   for (int i = 0 ; i < burst.length ; i++){
+    Turnaround = burst[i] + Turnaround;
+    turnarray[i] = Turnaround;
+    //System.out.println(Turnaround);
    }
    Arrays.sort(burst);
    for (int i = 0; i < burst.length; i++){
     System.out.print("["+  burst[i] +"]" );
-    System.out.println("");
+    System.out.print("");
    }
+   System.out.println("please enter what type of SJF do you want to schedul");
    int choose = sjf.nextInt();
    switch (choose) {
 
+  //non preemtive
+
   case 1:{
   /*turnaround time*/
-   for (int i = 0 ; i < burst.length ; i++){
-    Turnaround = burst[i] + Turnaround;
-    turnarray[i] = Turnaround;
-    System.out.println(Turnaround);
-   }
    int turntemp2 = 0;
    for (int i = 0 ; i < burst.length ; i++){
-    turntemp2 = turnarray[i] + turntemp2;
+    turnarray[i] = turnarray[i] - arrival[i];
    }
-   Turnaround = turntemp2/procces;
-   System.out.println("the terunaround is = " + Turnaround);
+   for (int i = 0 ; i < burst.length;i++){
+   turntemp2 = turnarray [i] + turntemp2;
+   //System.out.println(turntemp2);
+   }
+   Turnaround = turntemp2/arrivaltotal;
+   System.out.println("the turnaround is = " + Turnaround);
   /*waitnig time */
+  int waitngForNon = 0;
+  for (int i = 0 ; i < burst.length - 1 ; i++){
+    waitngForNon = burst[i] + waitngForNon;
+    waiting[i] = waitngForNon;
+    //System.out.println(Turnaround);
+   }
+   for (int i = 0 ; i < burst.length - 1 ; i++){
+    waiting[i] = waiting[i] - arrival[i];
+   }
+   waitngForNon = waitngForNon/arrivaltotal;
+   System.out.println("the waiting is = " + waitngForNon);
 }
       
     break;
-   
-    case 2:{
+    
+  //preemtive
+
+  case 2:{
 
     }
       break;
