@@ -1,6 +1,7 @@
 package src;
 
 import components.RoundRobin.RoundRobinScreen;
+import components.Fcfs.Fcfs;
 
 /*
   Guidelines:
@@ -21,9 +22,14 @@ public class Scheduler {
   /* 
     **Don't Delete This just replace what's between ' '**
     @Author: 'abdulrahman '
-    @Components: 'Write your component names here' 
+    @Components: 'Fcfs' 
   */
-    System.out.println("First come First Serve under work...");
+  // to get the number of process 
+  Screen.clearScreen();
+  int numberOfProcess = Fcfs.NumOfprocess();
+  int[] burstT = Fcfs.BurstT(numberOfProcess);
+  int[] WaitingT = Fcfs.WaitingT(burstT, numberOfProcess);
+  Fcfs.print(burstT, WaitingT, numberOfProcess);
   }
 
   private static void shortestJob() {
