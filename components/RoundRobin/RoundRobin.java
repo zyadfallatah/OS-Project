@@ -3,10 +3,14 @@ package components.RoundRobin;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
-
+import java.text.DecimalFormat;
 /*
   @Author: Ziyad mohammed fallatah
   Last updated: 5/7/2024  MM/DD/YYYY
+
+  @java.text.DecimalFormat Resource:
+    - Phind AI: https://www.phind.com | How to use it
+    - oracle doucment: https://docs.oracle.com/javase/8/docs/api/java/text/DecimalFormat.html | full documention
  */
 
 public class RoundRobin {
@@ -85,11 +89,12 @@ public class RoundRobin {
   }
 
   public String getAvg() {
+    DecimalFormat numFormat = new DecimalFormat("#.###");
     String finalString = "";
     finalString += totalProcessTimes.getProcessID();
-    finalString += "\nResponse Time: " + ((double) totalProcessTimes.getResponseTime() / idNum);
-    finalString += "\nWaiting Time: " + ((double) totalProcessTimes.getWaitingTime() / idNum);
-    finalString +="\nTurnaround Time: " + ((double) totalProcessTimes.getTurnAroundTime() / idNum) + "\n";
+    finalString += "\nResponse Time: " + numFormat.format(((double) totalProcessTimes.getResponseTime() / idNum));
+    finalString += "\nWaiting Time: " + numFormat.format((double) totalProcessTimes.getWaitingTime() / idNum);
+    finalString +="\nTurnaround Time: " + numFormat.format((double) totalProcessTimes.getTurnAroundTime() / idNum) + "\n";
     return finalString;
   }
 

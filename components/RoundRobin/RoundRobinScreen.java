@@ -73,7 +73,7 @@ public class RoundRobinScreen {
     printRoundRobin(robin.execute());
 
     System.out.println(robin.getAvg());
-    System.out.println("#Context switchs: " + robin.getContextSwitches());
+    System.out.println("#Context Switches: " + robin.getContextSwitches());
     }
   }
 
