@@ -2,6 +2,10 @@ package components.RoundRobin;
 
 import java.util.ArrayList;
 
+/* 
+  @Put all required variables into one Class
+ */
+
 public class ProcessData {
   private String processID;
   private int burstTime;

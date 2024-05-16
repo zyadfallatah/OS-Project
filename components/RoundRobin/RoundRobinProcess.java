@@ -1,8 +1,14 @@
 package components.RoundRobin;
 
+/*
+  - More Specific and only data that round robin needs
+  - Each process shall modify and control it self from within + have data that cannot be changed
+ */
+
 public class RoundRobinProcess extends ProcessData {
   private boolean finishState;
   private int lastWaitingTime;
+  private int intialBurstTime;
 
   public RoundRobinProcess(String id, int burst) {
     super(id, burst);
@@ -11,6 +17,7 @@ public class RoundRobinProcess extends ProcessData {
     this.setTurnAroundTime(0);
     this.finishState = false;
     this.lastWaitingTime = 0;
+    this.intialBurstTime = burst;
   }
 
   public void changeFinishState() {
@@ -29,4 +36,7 @@ public class RoundRobinProcess extends ProcessData {
     return lastWaitingTime;
   }
 
+  public int getIntialBurstTime() {
+    return intialBurstTime;
+  }
 }
