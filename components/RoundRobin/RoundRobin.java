@@ -49,15 +49,6 @@ public class RoundRobin {
     processList.remove(process);
   }
 
-  private boolean repeatingWaitingTime(RoundRobinProcess process) {
-    if (process.getWaitingTime() == 0) return true;
-
-    if (lastProcess == null) return false;
-    
-    if (lastProcess == process) return false;
-
-    return true;
-  }
 
   private void addProcess(RoundRobinProcess process) {
     if (isArrivalSame)
@@ -114,8 +105,6 @@ public class RoundRobin {
       if (assignResponseTime)
         process.setResponseTime(timeline);
 
-      if (repeatingWaitingTime(process))
-        process.setWaitingTime(timeline - process.getLastWaitingTime() - process.getArrivalTime());
 
       process.setBurstTime(process.getBurstTime() - quantum);
 
@@ -135,6 +124,8 @@ public class RoundRobin {
 
         removeItem(process);
         removed++;
+
+        process.setWaitingTime(timeline - process.getIntialBurstTime());
         process.setTurnAroundTime(timeline);
 
         setTotalProcessTime(process);

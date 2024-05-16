@@ -3,6 +3,7 @@ package components.RoundRobin;
 public class RoundRobinProcess extends ProcessData {
   private boolean finishState;
   private int lastWaitingTime;
+  private int intialBurstTime;
 
   public RoundRobinProcess(String id, int burst) {
     super(id, burst);
@@ -11,6 +12,7 @@ public class RoundRobinProcess extends ProcessData {
     this.setTurnAroundTime(0);
     this.finishState = false;
     this.lastWaitingTime = 0;
+    this.intialBurstTime = burst;
   }
 
   public void changeFinishState() {
@@ -29,4 +31,7 @@ public class RoundRobinProcess extends ProcessData {
     return lastWaitingTime;
   }
 
+  public int getIntialBurstTime() {
+    return intialBurstTime;
+  }
 }
