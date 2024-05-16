@@ -1,5 +1,10 @@
 package components.RoundRobin;
 
+/*
+  - More Specific and only data that round robin needs
+  - Each process shall modify and control it self from within + have data that cannot be changed
+ */
+
 public class RoundRobinProcess extends ProcessData {
   private boolean finishState;
   private int lastWaitingTime;

@@ -35,6 +35,7 @@ public class RoundRobinScreen {
     System.out.println("Turnaround Time: " + process.getTurnAroundTime());
   }
 
+  // Round robin execute() will return Queue<RoundRobinProcess>
   private static void printRoundRobin(Queue<RoundRobinProcess> processList) {
     while (!processList.isEmpty()) {
       RoundRobinProcess element = processList.poll();
@@ -43,7 +44,7 @@ public class RoundRobinScreen {
 
   }
 
-  private static ArrayList<Integer> roundRobinReader() {
+  private static ArrayList<Integer> reader() {
     ArrayList<Integer> burstTimeList = new ArrayList<>();
     char read;
     int userData;
@@ -67,7 +68,7 @@ public class RoundRobinScreen {
     true
     );
 
-    for (Integer userBurstTime : roundRobinReader()) {
+    for (Integer userBurstTime : reader()) {
       robin.createProcess(userBurstTime);
     }
     printRoundRobin(robin.execute());
