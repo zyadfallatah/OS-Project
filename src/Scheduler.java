@@ -50,6 +50,7 @@ public class Scheduler {
     @Author: 'Eyad Kamil Sughayyir'
     @Components: 'Priority' 
   */
+    Screen.clearScreen();
     Scanner scanner = new Scanner(System.in);
     
     // Reading
