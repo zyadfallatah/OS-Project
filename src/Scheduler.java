@@ -3,12 +3,13 @@ package src;
 import components.RoundRobin.RoundRobinScreen;
 import components.Sjf.Sjf;
 import components.Fcfs.Fcfs;
+import components.Priority.Priority;
 
+import java.util.Scanner;
 /*
   Guidelines:
   - Each person will be assign to a different operation
   - If you have a new class you want to add, add it to components
-  - Don't modify core package
 
   
   Read Guide:
@@ -32,11 +33,12 @@ public class Scheduler {
   int[] WaitingT = Fcfs.WaitingT(burstT, numberOfProcess);
   Fcfs.print(burstT, WaitingT, numberOfProcess);
   }
+  
   private static void shortestJob() {
   /* 
     **Don't Delete This just replace what's between ' '**
     @Author: 'hussain lohmadi'
-    @Components: 'shortest job first' 
+    @Components: 'sjf' 
   */
   Screen.clearScreen();
   Sjf.call();
@@ -46,30 +48,40 @@ public class Scheduler {
   /* 
     **Don't Delete This just replace what's between ' '**
     @Author: 'Eyad Kamil Sughayyir'
-    @Components: 'Write your component names here' 
+    @Components: 'Priority' 
   */
-      Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter number of processes: ");
-        int numProcesses = scanner.nextInt();
-        int[] burstTimes = new int[numProcesses];
-        int[] priorities = new int[numProcesses];
-        String[] processNames = new String[numProcesses];
-        for (int i = 0; i < numProcesses; i++) {
-            processNames[i] = "P" + (i + 1);
-            System.out.print("Enter burst time for process " + processNames[i] + ": ");
-            burstTimes[i] = scanner.nextInt();
-            System.out.print("Enter priority for process " + processNames[i] + ": ");
-            priorities[i] = scanner.nextInt();
-        }
-        priority.rankp(burstTimes, priorities, processNames);
-        int[] waitingTimes = new int[numProcesses];
-        int[] turnAroundTimes = new int[numProcesses];
-        priority.countingT(burstTimes, priorities, processNames, waitingTimes, turnAroundTimes);
-        priority.finalprint(burstTimes, priorities, processNames, waitingTimes, turnAroundTimes);
-        double averageWaitingTime = priority.AverageWaitingTime(waitingTimes);
-        System.out.println("\nAverage Waiting Time: " + averageWaitingTime);  
-        double averageTurnaroundTime = priority.AverageTurnaroundTime(turnAroundTimes);
-        System.out.println("Average Turnaround Time: " + averageTurnaroundTime);
+    Scanner scanner = new Scanner(System.in);
+    
+    // Reading
+    System.out.print("Enter number of processes: ");
+    int numProcesses = scanner.nextInt();
+    int[] burstTimes = new int[numProcesses];
+    int[] priorities = new int[numProcesses];
+    String[] processNames = new String[numProcesses];
+    for (int i = 0; i < numProcesses; i++) {
+        processNames[i] = "P" + (i + 1);
+        System.out.print("Enter burst time for process " + processNames[i] + ": ");
+        burstTimes[i] = scanner.nextInt();
+        System.out.print("Enter priority for process " + processNames[i] + ": ");
+        priorities[i] = scanner.nextInt();
+    }
+    
+    // Modifying Priority
+    Priority.rankp(burstTimes, priorities, processNames);
+
+    int[] waitingTimes = new int[numProcesses];
+    int[] turnAroundTimes = new int[numProcesses];
+
+    // Calculate waiting time + turnaround
+    Priority.countingT(burstTimes, priorities, processNames, waitingTimes, turnAroundTimes);
+
+    Priority.finalprint(burstTimes, priorities, processNames, waitingTimes, turnAroundTimes);
+
+    double averageWaitingTime = Priority.AverageWaitingTime(waitingTimes);
+    System.out.println("\nAverage Waiting Time: " + averageWaitingTime);  
+    
+    double averageTurnaroundTime = Priority.AverageTurnaroundTime(turnAroundTimes);
+    System.out.println("Average Turnaround Time: " + averageTurnaroundTime);
   }
 
   private static void roundRobin() {
