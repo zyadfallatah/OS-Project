@@ -17,11 +17,11 @@ public class priority {
         array[j] = temp;
          }//swap2 function
     //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-     public static void rankp(int[] BurstT, int[] priopriorityirty,String[]processName){
+     public static void rankp(int[] BurstT, int[] priority,String[]processName){
      int nump = BurstT.length;//This line stores the number of elements in the BurstT array in the nump variable
      for(int i=0;i<nump-1;i++){         //This loop arranges process
      for(int j=0; j<nump-i-1;j++){           //This loop Compare priorities
-     if(priority[j]<priority[j+1]){               //Order or priority condition
+     if(priority[j]>priority[j+1]){               //Order or priority condition
       swap1(priority,j,j+1);                    //The function defined below is for arrays that store integers
            swap1(BurstT,j,j+1);                     //The function defined below is for arrays that store integers
                 swap2(processName,j,j+1);               //The function defined below is for arrays that store String
