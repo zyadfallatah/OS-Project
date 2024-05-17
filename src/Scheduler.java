@@ -32,7 +32,6 @@ public class Scheduler {
   int[] WaitingT = Fcfs.WaitingT(burstT, numberOfProcess);
   Fcfs.print(burstT, WaitingT, numberOfProcess);
   }
-
   private static void shortestJob() {
   /* 
     **Don't Delete This just replace what's between ' '**
