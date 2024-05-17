@@ -1,6 +1,7 @@
 package src;
 
 import components.RoundRobin.RoundRobinScreen;
+import components.Sjf.Sjf;
 import components.Fcfs.Fcfs;
 
 /*
@@ -38,6 +39,8 @@ public class Scheduler {
     @Author: 'hussain lohmadi'
     @Components: 'shortest job first' 
   */
+  Screen.clearScreen();
+  Sjf.call();
   }
 
   private static void priority() {
