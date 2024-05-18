@@ -65,6 +65,7 @@ public class Scheduler {
         burstTimes[i] = scanner.nextInt();
         System.out.print("Enter priority for process " + processNames[i] + ": ");
         priorities[i] = scanner.nextInt();
+        System.out.println("");
     }
     
     // Modifying Priority
