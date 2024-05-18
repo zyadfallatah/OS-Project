@@ -1,10 +1,10 @@
-package components.Priority;
+package components.priority;
 
 /* 
     Resources: ChatGpt
 */
 
-public class Priority {
+public class priority {
     
 //This function defined  for arrays that store integers to swap
   private static void swap1(int[] array, int i, int j){

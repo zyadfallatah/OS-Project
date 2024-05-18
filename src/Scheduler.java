@@ -2,8 +2,8 @@ package src;
 
 import components.RoundRobin.RoundRobinScreen;
 import components.Sjf.Sjf;
+import components.priority.priority;
 import components.Fcfs.Fcfs;
-import components.Priority.Priority;
 
 import java.util.Scanner;
 /*
@@ -68,20 +68,20 @@ public class Scheduler {
     }
     
     // Modifying Priority
-    Priority.rankp(burstTimes, priorities, processNames);
+    priority.rankp(burstTimes, priorities, processNames);
 
     int[] waitingTimes = new int[numProcesses];
     int[] turnAroundTimes = new int[numProcesses];
 
     // Calculate waiting time + turnaround
-    Priority.countingT(burstTimes, priorities, processNames, waitingTimes, turnAroundTimes);
+    priority.countingT(burstTimes, priorities, processNames, waitingTimes, turnAroundTimes);
 
-    Priority.finalprint(burstTimes, priorities, processNames, waitingTimes, turnAroundTimes);
+    priority.finalprint(burstTimes, priorities, processNames, waitingTimes, turnAroundTimes);
 
-    double averageWaitingTime = Priority.AverageWaitingTime(waitingTimes);
+    double averageWaitingTime = priority.AverageWaitingTime(waitingTimes);
     System.out.println("\nAverage Waiting Time: " + averageWaitingTime);  
     
-    double averageTurnaroundTime = Priority.AverageTurnaroundTime(turnAroundTimes);
+    double averageTurnaroundTime = priority.AverageTurnaroundTime(turnAroundTimes);
     System.out.println("Average Turnaround Time: " + averageTurnaroundTime);
   }
 
