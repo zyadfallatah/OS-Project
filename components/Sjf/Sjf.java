@@ -71,27 +71,35 @@ public class Sjf {
     }
 
     public static void clacStartFinish(procces[]array) {
-        for(int i=0;i<array.length;i++){
-            if(i==0){
-                array[i].setPStart(0);
-                array[i].setPFinish(array[i].getBurstTime());
-            }else{
-                array[i].setPStart(array[i-1].getPFinish());
-                array[i].setPFinish(array[i].getPStart()+array[i].getBurstTime());
-            }
-        }
+      for(int i=0;i<array.length;i++){
+          if(i==0){
+            array[i].setPStart(0);
+            array[i].setPFinish(array[i].getBurstTime());
+          }else{
+            array[i].setPStart(array[i-1].getPFinish());
+            array[i].setPFinish(array[i].getPStart()+array[i].getBurstTime());
+          }
+      }
     }
 
     public static void sort(procces[]array){
-        for(int i = 0; i < array.length; i++){
-            if(i+1 == array.length){
-                break;
-            }else if (array[i].getBurstTime() > array[i+1].getBurstTime()){
-                procces temp = array[i];
-                array[i] = array[i+1];
-                array[i+1] = temp;
-            }
-            
+      for(int i = 0; i < array.length; i++){
+        if(i+1 == array.length){
         }
-    }
+        else if (array[i].getBurstTime() > array[i+1].getBurstTime()){
+            procces temp = array[i];
+            array[i] = array[i+1];
+            array[i+1] = temp;
+        }
+      }
+      for(int i = array.length - 1; i >= 0; i--){
+        if(i-1 == -1){
+          }else if (array[i].getBurstTime() < array[i-1].getBurstTime()){
+            procces temp = array[i-1];
+            array[i-1] = array[i];
+            array[i] = temp;
+        }
+        
+      }
+  }
 }
