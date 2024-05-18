@@ -1,3 +1,9 @@
+## Students
+- Ziyad mohammed fallatah      sID: 444000314
+- Abdulrahman Ahmed Yateem     sID: 444005937
+- AL Hussain Mohamed Lohmadi   sID: 444001990   
+- Eyad Kamil Sughayyir         sID: 444003001
+
 ## **=== Requirements ===**
 
 ### -- Goal: Demonstrate a CPU scheduler that outputs (Waiting + Turnaround + Response).
